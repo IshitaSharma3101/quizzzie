@@ -1,3 +1,6 @@
+"scripts": {
+    "start": "node your-script.js"
+}
 {
   "name": "EntireAcademicThings",
   "version": "1.0.0",
