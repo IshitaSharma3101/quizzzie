@@ -3,28 +3,28 @@ var readlineSync = require('readline-sync');
 var score=0;
 var log=console.log;
 
-var userName = readlineSync.question(`Hey! What's your name? 
-=> `);
+var userName = readlineSync.question(chalk.bgRed(`Hey! What's your name?
+`));
 
-log(chalk.yellow(`
+log(chalk.bgCyan(`
 Welcome to the quiz game ${userName} :)`));
-log(`
+log(chalk.bgWhite.black.bold(`
 For each correct answer, you'll recieve 1 point.
-So, here you go (^o^)`);
+So, here you go (^o^)`));
 
 
 
 
 function quiz(question, answer){
-  var userAnswer = readlineSync.question(question);
+  var userAnswer = readlineSync.question(chalk.yellow(question));
   if(answer.toUpperCase() === userAnswer.toUpperCase()){
-    log("Yeah! You're correct :)");
+    log(chalk.green.bold(`\nYeah! You're correct :)`));
     score++
   }else{
-    log(`Oops! That's incorrect :(`);
+    log(chalk.red.bold(`\nOops! That's incorrect :(`));
   }
-  log(`Your current score is ${score} !
----------------------------------------------`);
+  log(chalk.bgRed.black.bold(`\nYour current score is ${score} !\n`)+
+`\n---------------------------------------------`);
 }
 
 //array
@@ -36,8 +36,9 @@ var questions = [
    a. Emu
    b. Ostrich
    c. Albatross
-   d. Siberian Crane
-Answer = `,
+   d. Siberian Crane`+
+chalk.blueBright.bold(`
+Answer = `),
   answer: "b"
 },
 {
@@ -46,8 +47,9 @@ Answer = `,
    a. Elephant
    b. Whale
    c. Dinosaur
-   d. Rhinocero
-Answer = `, 
+   d. Rhinocero`+
+chalk.blueBright.bold(`
+Answer = `),
   answer: "b"
 },
 {
@@ -56,8 +58,9 @@ Answer = `,
    a. Echidna
    b. Kangaroo
    c. Porcupine
-   d. Whale
-Answer = `,
+   d. Whale`+
+chalk.blueBright.bold(`
+Answer = `),
   answer: "a"
 },
 {
@@ -66,8 +69,9 @@ Answer = `,
    a. Sheep
    b. Rabbit
    c. Goat
-   d. Yak
-Answer = `, 
+   d. Yak`+
+chalk.blueBright.bold(`
+Answer = `),
   answer: "c"
 },
 {
@@ -76,8 +80,9 @@ Answer = `,
    a. India
    b. United States 
    c. Spain
-   d. Japan 
-Answer = `, 
+   d. Japan `+
+chalk.blueBright(`
+Answer = `),
   answer: "d"
 }];
 
@@ -89,5 +94,5 @@ for(var i=0;i<questions.length;i++){
 }
 
 
-log(`                 GAME ENDED 
-               YOUR SCORE : ` + score);
+log(chalk.bold.cyan`                 GAME ENDED`+ 
+chalk.magentaBright.bold`\n               YOUR SCORE : ` + score);
